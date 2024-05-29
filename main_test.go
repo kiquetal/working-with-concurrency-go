@@ -7,6 +7,21 @@ import (
 	"testing"
 
 )
+func Test_updateMessage(t *testing.T){
+	wg.Add(1)
+	
+	updateMessage("epsilon",&wg)
+	wg.Wait()
+
+	if msg != "epsilon" {
+
+		t.Errorf("Expected to find epsilon, but it is not there,%v",msg)
+	}
+
+
+
+}
+
 
 func Test_printMessage(t *testing.T) {
 
@@ -25,7 +40,7 @@ func Test_printMessage(t *testing.T) {
 	os.Stdout = stdOut
 
 	if !strings.Contains(output,"epsilon") {
-             t.Error("Expected to find epsilon, but it is not there")
+             t.Errorf("Expected to find epsilon, but it is not there %v",output)
 	}
 
 
